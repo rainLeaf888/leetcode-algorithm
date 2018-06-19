@@ -1,0 +1,33 @@
+// https://leetcode.com/problems/number-of-lines-to-write-string/description/
+/**
+ * @param {number[]} widths
+ * @param {string} S
+ * @return {number[]}
+ */
+var numberOfLines = function(widths, S) {
+    let charStr = 'abcdefghijklmnopqrstuvwxyz'
+    let totalWidth = 0
+    let lines = 0
+    for(let i = 0; i < S.length; i++) {
+        let index = charStr.indexOf(S[i])
+        totalWidth += widths[index]
+        if (totalWidth > 100) {
+            lines++
+            totalWidth = widths[index]
+        } else if (totalWidth === 100){
+            lines++
+            totalWidth = 0
+        } 
+        if(i === S.length -1 && totalWidth > 0) lines++    
+        
+    }
+    return [lines, totalWidth]
+
+};
+
+var params = [
+[[10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10], 'abcdefghijklmnopqrstuvwxyz'],
+[[4,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10], 'bbbcccdddaaa']
+]
+
+numberOfLines.apply(null, params[1])

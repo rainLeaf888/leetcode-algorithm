@@ -1,0 +1,23 @@
+// https://leetcode.com/problems/goat-latin/description/
+/**
+ * @param {string} S
+ * @return {string}
+ */
+var toGoatLatin = function(S) {
+    let vowelArr = ['a', 'e', 'i', 'o', 'u']
+    let arr = S.split(' ')
+    let result = []
+    for(let i = 0; i < arr.length; i++) {
+        let prefix = arr[i].substring(0, 1)
+        let letterArr = Array.from({length: i+1}).map((n, i) => 'a')
+        if (vowelArr.indexOf(prefix.toLowerCase()) > -1) {
+            result.push(`${arr[i]}ma${letterArr.join('')}`) 
+        } else {
+            result.push(`${arr[i].substring(1)}${prefix}ma${letterArr.join('')}`)
+        }
+    }
+    return result.join(' ')
+};
+
+var params = [['I speak Goat Latin'], ['The quick brown fox jumped over the lazy dog']]
+toGoatLatin.apply(null, params[1])

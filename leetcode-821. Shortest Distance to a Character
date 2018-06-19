@@ -1,0 +1,27 @@
+// https://leetcode.com/problems/shortest-distance-to-a-character/description/
+/**
+ * @param {string} S
+ * @param {character} C
+ * @return {number[]}
+ */
+var shortestToChar = function(S, C) {
+    let arr = []
+     for(let i = 0; i < S.length; i++) {
+        if (S[i] === C) arr.push(i)
+     }
+     let newArr = []
+     for(let j = 0; j < S.length; j++) {
+        let distanceArr = []
+        arr.forEach(n => {
+          distanceArr.push(Math.abs(n - j))
+        })
+        let min = Math.min.apply(null, distanceArr)
+        newArr.push(min)
+     }
+     return newArr
+};
+var params = [
+    "loveleetcode",
+    "e"
+]
+shortestToChar.apply(null, params)

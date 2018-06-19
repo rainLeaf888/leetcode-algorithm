@@ -1,0 +1,20 @@
+// https://leetcode.com/problems/longest-uncommon-subsequence-i/description/
+/**
+ * @param {string} a
+ * @param {string} b
+ 比较两个字符串的长度，若不相等，则返回长度的较大值，若相等则再判断两个字符串是否相同，若相同则返回-1，否则返回长度
+ * @return {number}
+ */
+var findLUSlength = function(a, b) {
+    if (a.length !== b.length) {
+        return a.length > b.length ? a.length : b.length
+    } else {
+        if (a !== b) {
+            return a.length
+        } else {
+            return -1
+        }
+    }
+};
+var params = ['abc', 'cdc']
+findLUSlength.apply(null, params)

@@ -1,0 +1,35 @@
+// https://leetcode.com/problems/subdomain-visit-count/description/
+/**
+ * @param {string[]} cpdomains
+ * @return {string[]}
+ */
+var subdomainVisits = function(cpdomains) {
+    let obj = {}
+    cpdomains.forEach(n => {
+        let arr = n.split(' ')
+        let count = arr[0]
+        let domainsArr = arr[1].split('.')
+        let temp = ''
+        for(let i = domainsArr.length -1; i >=0; i--) {
+            temp = domainsArr[i] + (temp ? `.${temp}` : '')
+            if (obj.hasOwnProperty(temp)) {
+                obj[temp] = count*1 + (obj[temp] || 0)
+            } else {
+                obj = Object.assign({}, obj, {
+                    [temp]: count * 1
+                })
+            } 
+        }
+        
+    })
+    return Object.keys(obj).map(t => {
+        return `${obj[t]} ${t}`
+    })
+};
+
+var params = [
+    [["9001 discuss.leetcode.com"]],
+    [["900 google.mail.com", "50 yahoo.com", "1 intel.mail.com", "5 wiki.org"]]
+]
+
+subdomainVisits.apply(null, params[0])

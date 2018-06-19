@@ -1,0 +1,29 @@
+// https://leetcode.com/problems/average-of-levels-in-binary-tree/description/
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {number[]}
+ */
+var averageOfLevels = function(root) {
+    let result = [root.val]
+    
+    
+    function average(leftNode, rightNode) {
+        let levelVal = 0
+        if (leftNode) levelVal += node.left.val
+        if (rightNode) levelVal += node.right.val
+        result.push(levelVal / 2)
+        if (leftNode.left) loop()
+    }
+};
+
+function TreeNode(val) {
+    this.val = val
+    this.left = this.right = null
+}
